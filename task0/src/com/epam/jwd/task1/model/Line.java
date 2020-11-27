@@ -32,7 +32,7 @@ public class Line {
     }
 
     public boolean validateLine() {
-        if (point1 ==  point2) {
+        if (point1 == point2) {
             return false;
         }
         return true;

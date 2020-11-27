@@ -1,27 +1,30 @@
 package com.epam.jwd.task1.model;
 
 import com.epam.jwd.task1.strategy.FigureStrategy;
-import com.epam.jwd.task1.strategy.TriangleStrategy;
+import com.epam.jwd.task1.strategy.TriangleStrategyImpl;
 
 import java.util.Objects;
 
 public class Triangle extends Figure {
 
-    private static FigureStrategy triangleStrategy = TriangleStrategy.getInstance();
+    private static FigureStrategy triangleStrategy = TriangleStrategyImpl.getInstance();
 
     private Point point1;
     private Point point2;
     private Point point3;
 
+    private Point[] points;
+
     private double firstSide;
     private double secondSide;
     private double thirdSide;
 
-    public Triangle(Point point1, Point point2, Point point3){
+    public Triangle(Point point1, Point point2, Point point3) {
         super(triangleStrategy);
         this.point1 = point1;
         this.point2 = point2;
         this.point3 = point3;
+        points = new Point[]{point1, point2, point3};
     }
 
     public Point getPoint1() {
@@ -46,6 +49,10 @@ public class Triangle extends Figure {
 
     public void setPoint3(Point point3) {
         this.point3 = point3;
+    }
+
+    public Point[] getPoints() {
+        return points;
     }
 
     public double getFirstSide() {
@@ -88,16 +95,6 @@ public class Triangle extends Figure {
         } else {
             return true;
         }
-    }
-
-    public double calculatePerimeter() {
-        Point[] points = new Point[]{getPoint1(), getPoint2(), getPoint3()};
-        return triangleStrategy.calculatePerimeter(points);
-    }
-
-    public double calculateArea() {
-        Point[] points = new Point[]{getPoint1(), getPoint2(), getPoint3()};
-        return triangleStrategy.calculateArea(points);
     }
 
     @Override

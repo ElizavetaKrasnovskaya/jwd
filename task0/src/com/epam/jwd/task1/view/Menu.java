@@ -101,37 +101,37 @@ public class Menu {
         }
     }
 
-    public void printTriangles(){
+    public void printTriangles() {
         for (int i = 0; i < figureService.getTriangles().length; i++) {
             if (figureService.getTriangles()[i].validate()) {
                 System.out.println(figureService.getTriangles()[i]);
                 logger.info(figureService.getTriangles()[i]);
 
-            } else{
+            } else {
                 System.out.println("Triangle " + figureService.getTriangles()[i] + " isn't figure");
                 logger.error("Triangle " + figureService.getTriangles()[i] + " isn't figure");
             }
         }
     }
 
-    public void printSquare(){
-        for(int i = 0; i < figureService.getSquares().length; i++){
+    public void printSquare() {
+        for (int i = 0; i < figureService.getSquares().length; i++) {
             if (figureService.getSquares()[i].validate()) {
                 System.out.println(figureService.getSquares()[i]);
                 logger.info(figureService.getSquares()[i]);
-            }else{
+            } else {
                 System.out.println("Square " + figureService.getSquares()[i] + " isn't figure");
                 logger.error("Square " + figureService.getSquares()[i] + " isn't figure");
             }
         }
     }
 
-    public void printMultiAngle(){
-        for(int i=0; i<figureService.getMultiAngles().length; i++){
-            if(figureService.getMultiAngles()[i].validate()){
+    public void printMultiAngle() {
+        for (int i = 0; i < figureService.getMultiAngles().length; i++) {
+            if (figureService.getMultiAngles()[i].validate()) {
                 System.out.println(figureService.getMultiAngles()[i]);
                 logger.info(figureService.getMultiAngles());
-            }else{
+            } else {
                 System.out.println("Multi angel " + figureService.getMultiAngles()[i] + " isn't figure");
                 logger.error("Multi angel " + figureService.getMultiAngles()[i] + " isn't figure");
             }
@@ -141,9 +141,9 @@ public class Menu {
     public void printPerimeterOfTriangle() {
         for (int i = 0; i < figureService.getTriangles().length; i++) {
             if (figureService.getTriangles()[i].validate()) {
-                System.out.println(figureService.getTriangles()[i].calculatePerimeter());
-                logger.info(figureService.getTriangles()[i].calculatePerimeter());
-            }else{
+                System.out.println(figureService.getTriangles()[i].calculatePerimeter(figureService.getTriangles()[i].getPoints()));
+                logger.info(figureService.getTriangles()[i].calculatePerimeter(figureService.getTriangles()[i].getPoints()));
+            } else {
                 System.out.println("Sorry it isn't triangle(((");
                 logger.error("Sorry it isn't triangle(((");
             }
@@ -153,57 +153,57 @@ public class Menu {
     public void printAreaOfTriangle() {
         for (int i = 0; i < figureService.getTriangles().length; i++) {
             if (figureService.getTriangles()[i].validate()) {
-                System.out.println(figureService.getTriangles()[i].calculateArea());
-                logger.info(figureService.getTriangles()[i].calculateArea());
-            }else{
+                System.out.println(figureService.getTriangles()[i].calculateArea(figureService.getTriangles()[i].getPoints()));
+                logger.info(figureService.getTriangles()[i].calculateArea(figureService.getTriangles()[i].getPoints()));
+            } else {
                 System.out.println("Sorry it isn't triangle(((");
                 logger.error("Sorry it isn't triangle(((");
             }
         }
     }
 
-    public void printPerimeterOfSquare(){
-        for(int i=0; i<figureService.getSquares().length; i++){
-            if(figureService.getSquares()[i].validate()){
-                System.out.println(figureService.getSquares()[i].calculateArea());
-                logger.info(figureService.getSquares()[i].calculateArea());
-            }else{
+    public void printPerimeterOfSquare() {
+        for (int i = 0; i < figureService.getSquares().length; i++) {
+            if (figureService.getSquares()[i].validate()) {
+                System.out.println(figureService.getSquares()[i].calculateArea(figureService.getSquares()[i].getPoints()));
+                logger.info(figureService.getSquares()[i].calculateArea(figureService.getSquares()[i].getPoints()));
+            } else {
                 System.out.println("Sorry it isn't square");
                 logger.error("Sorry it isn't square");
             }
         }
     }
 
-    public void printAreaOfSquare(){
-        for(int i = 0; i<figureService.getSquares().length; i++){
-            if(figureService.getSquares()[i].validate()){
-                System.out.println(figureService.getSquares()[i].calculateArea());
-                logger.info(figureService.getSquares()[i].calculateArea());
-            }else{
+    public void printAreaOfSquare() {
+        for (int i = 0; i < figureService.getSquares().length; i++) {
+            if (figureService.getSquares()[i].validate()) {
+                System.out.println(figureService.getSquares()[i].calculateArea(figureService.getSquares()[i].getPoints()));
+                logger.info(figureService.getSquares()[i].calculateArea(figureService.getSquares()[i].getPoints()));
+            } else {
                 System.out.println("Sorry it isn't square");
                 logger.error("Sorry it isn't square");
             }
         }
     }
 
-    public void printPerimeterOfMultiAngle(){
-        for(int i=0; i<figureService.getMultiAngles().length; i++){
-            if(figureService.getMultiAngles()[i].validate()){
-                System.out.println(figureService.getMultiAngles()[i].calculatePerimeter());
-                logger.info(figureService.getMultiAngles()[i].calculatePerimeter());
-            }else{
+    public void printPerimeterOfMultiAngle() {
+        for (int i = 0; i < figureService.getMultiAngles().length; i++) {
+            if (figureService.getMultiAngles()[i].validate()) {
+                System.out.println(figureService.getMultiAngles()[i].calculatePerimeter(figureService.getMultiAngles()[i].getPoints()));
+                logger.info(figureService.getMultiAngles()[i].calculatePerimeter(figureService.getMultiAngles()[i].getPoints()));
+            } else {
                 System.out.println("Sorry it isn't multi angle");
                 logger.error("Sorry it isn't multi angle");
             }
         }
     }
 
-    public void printAreaOfMultiAngle(){
-        for(int i=0; i<figureService.getMultiAngles().length; i++){
-            if(figureService.getMultiAngles()[i].validate()){
-                System.out.println(figureService.getMultiAngles()[i].calculateArea());
-                logger.info(figureService.getMultiAngles()[i].calculateArea());
-            }else{
+    public void printAreaOfMultiAngle() {
+        for (int i = 0; i < figureService.getMultiAngles().length; i++) {
+            if (figureService.getMultiAngles()[i].validate()) {
+                System.out.println(figureService.getMultiAngles()[i].calculateArea(figureService.getMultiAngles()[i].getPoints()));
+                logger.info(figureService.getMultiAngles()[i].calculateArea(figureService.getMultiAngles()[i].getPoints()));
+            } else {
                 System.out.println("Sorry it isn't multi angle");
                 logger.error("Sorry it isn't multi angle");
             }

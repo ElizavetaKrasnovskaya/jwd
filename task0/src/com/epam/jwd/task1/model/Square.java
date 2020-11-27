@@ -1,18 +1,20 @@
 package com.epam.jwd.task1.model;
 
 import com.epam.jwd.task1.strategy.FigureStrategy;
-import com.epam.jwd.task1.strategy.SquareStrategy;
+import com.epam.jwd.task1.strategy.SquareStrategyImpl;
 
 import java.util.Objects;
 
-public class Square extends Figure{
+public class Square extends Figure {
 
-    private static FigureStrategy squareStrategy = SquareStrategy.getInstance();
+    private static FigureStrategy squareStrategy = SquareStrategyImpl.getInstance();
 
     private Point point1;
     private Point point2;
     private Point point3;
     private Point point4;
+
+    private Point[] points;
 
     private double firstSide;
     private double secondSide;
@@ -28,6 +30,7 @@ public class Square extends Figure{
         this.point2 = point2;
         this.point3 = point3;
         this.point4 = point4;
+        points = new Point[]{point1, point2, point3, point4};
     }
 
     public Point getPoint1() {
@@ -60,6 +63,10 @@ public class Square extends Figure{
 
     public void setPoint4(Point point4) {
         this.point4 = point4;
+    }
+
+    public Point[] getPoints() {
+        return points;
     }
 
     public double getFirstSide() {
@@ -116,16 +123,6 @@ public class Square extends Figure{
         } else {
             return true;
         }
-    }
-
-    public double calculatePerimeter() {
-        Point[] points = new Point[]{getPoint1(), getPoint2(), getPoint3(), getPoint3(), getPoint4()};
-        return squareStrategy.calculatePerimeter(points);
-    }
-
-    public double calculateArea() {
-        Point[] points = new Point[]{getPoint1(), getPoint2(), getPoint3(), getPoint4()};
-        return squareStrategy.calculateArea(points);
     }
 
     @Override
