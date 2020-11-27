@@ -1,5 +1,7 @@
 package com.epam.jwd.task1.model;
 
+import java.util.Objects;
+
 public class Point {
     private double x;
     private double y;
@@ -32,5 +34,19 @@ public class Point {
         return "Point " +
                 "x = " + x +
                 ", y = " + y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Point)) return false;
+        Point point = (Point) o;
+        return Double.compare(point.getX(), getX()) == 0 &&
+                Double.compare(point.getY(), getY()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getX(), getY());
     }
 }

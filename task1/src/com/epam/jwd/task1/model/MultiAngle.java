@@ -1,13 +1,13 @@
 package com.epam.jwd.task1.model;
 
 import com.epam.jwd.task1.strategy.FigureStrategy;
-import com.epam.jwd.task1.strategy.SquareStrategy;
+import com.epam.jwd.task1.strategy.MultiAngleStrategy;
 
 import java.util.Objects;
 
-public class Square extends Figure{
+public class MultiAngle extends Figure {
 
-    private static FigureStrategy squareStrategy = SquareStrategy.getInstance();
+    private static FigureStrategy multiAngleStrategy = MultiAngleStrategy.INSTANCE;
 
     private Point point1;
     private Point point2;
@@ -19,11 +19,11 @@ public class Square extends Figure{
     private double thirdSide;
     private double fourthSide;
 
-    public Square() {
+    public MultiAngle() {
     }
 
-    public Square(Point point1, Point point2, Point point3, Point point4) {
-        super(squareStrategy);
+    public MultiAngle(Point point1, Point point2, Point point3, Point point4) {
+        super(multiAngleStrategy);
         this.point1 = point1;
         this.point2 = point2;
         this.point3 = point3;
@@ -109,10 +109,14 @@ public class Square extends Figure{
                 getPoint2().equals(getPoint3()) ||
                 getPoint2().equals(getPoint4()) ||
                 getPoint3().equals(getPoint4())) {
+
             return false;
+
         } else if (firstSide != secondSide || firstSide != thirdSide || firstSide != fourthSide ||
                 secondSide != thirdSide || secondSide != fourthSide || thirdSide != fourthSide) {
+
             return false;
+
         } else {
             return true;
         }
@@ -120,17 +124,17 @@ public class Square extends Figure{
 
     public double calculatePerimeter() {
         Point[] points = new Point[]{getPoint1(), getPoint2(), getPoint3(), getPoint3(), getPoint4()};
-        return squareStrategy.calculatePerimeter(points);
+        return multiAngleStrategy.calculatePerimeter(points);
     }
 
     public double calculateArea() {
         Point[] points = new Point[]{getPoint1(), getPoint2(), getPoint3(), getPoint4()};
-        return squareStrategy.calculateArea(points);
+        return multiAngleStrategy.calculateArea(points);
     }
 
     @Override
     public String toString() {
-        return "Square " +
+        return "MultiAngle " +
                 "point 1 = " + point1 +
                 ", point 2 = " + point2 +
                 ", point 3 = " + point3 +
@@ -140,12 +144,12 @@ public class Square extends Figure{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Square)) return false;
-        Square square = (Square) o;
-        return getPoint1().equals(square.getPoint1()) &&
-                getPoint2().equals(square.getPoint2()) &&
-                getPoint3().equals(square.getPoint3()) &&
-                getPoint4().equals(square.getPoint4());
+        if (!(o instanceof MultiAngle)) return false;
+        MultiAngle that = (MultiAngle) o;
+        return getPoint1().equals(that.getPoint1()) &&
+                getPoint2().equals(that.getPoint2()) &&
+                getPoint3().equals(that.getPoint3()) &&
+                getPoint4().equals(that.getPoint4());
     }
 
     @Override

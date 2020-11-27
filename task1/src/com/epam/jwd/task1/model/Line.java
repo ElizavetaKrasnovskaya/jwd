@@ -1,5 +1,7 @@
 package com.epam.jwd.task1.model;
 
+import java.util.Objects;
+
 public class Line {
 
     private Point point1;
@@ -29,10 +31,31 @@ public class Line {
         this.point2 = point2;
     }
 
+    public boolean validateLine() {
+        if (point1 ==  point2) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Line " +
                 "point1 = " + point1 +
                 ", point2 = " + point2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Line)) return false;
+        Line line = (Line) o;
+        return getPoint1().equals(line.getPoint1()) &&
+                getPoint2().equals(line.getPoint2());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPoint1(), getPoint2());
     }
 }
