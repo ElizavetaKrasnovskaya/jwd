@@ -1,5 +1,6 @@
 package com.epam.jwd.task1.controller;
 
+import com.epam.jwd.task1.model.FigureFactory;
 import com.epam.jwd.task1.model.Line;
 import com.epam.jwd.task1.model.MultiAngle;
 import com.epam.jwd.task1.model.Point;
@@ -7,6 +8,8 @@ import com.epam.jwd.task1.model.Square;
 import com.epam.jwd.task1.model.Triangle;
 
 public class FigureService {
+
+    FigureFactory figureFactory = new FigureFactory();
 
     private final static int amountOfPoints = 4;
     private final static int amountOfLines = 2;
@@ -28,21 +31,40 @@ public class FigureService {
     }
 
     public void initLines() {
+        initPoints();
         lines[0] = new Line(points[1], points[2]);
         lines[1] = new Line(points[3], points[3]);
     }
 
     public void initTriangles() {
-        triangles[0] = new Triangle(points[0], points[1], points[2]);
-        triangles[1] = new Triangle(points[1], points[2], points[1]);
+        initPoints();
+        triangles[0] = (Triangle) figureFactory.createFigure("Triangle");
+        triangles[0].setPoint1(points[0]);
+        triangles[0].setPoint2(points[1]);
+        triangles[0].setPoint3(points[2]);
+
+        triangles[1] = (Triangle) figureFactory.createFigure("Triangle");
+        triangles[1].setPoint1(points[0]);
+        triangles[1].setPoint2(points[1]);
+        triangles[1].setPoint3(points[1]);
     }
 
     public void initSquare() {
-        squares[0] = new Square(points[0], points[1], points[2], points[3]);
+        initPoints();
+        squares[0] = (Square) figureFactory.createFigure("Square");
+        squares[0].setPoint1(points[0]);
+        squares[0].setPoint2(points[1]);
+        squares[0].setPoint3(points[2]);
+        squares[0].setPoint4(points[3]);
     }
 
     public void initMultiAngle() {
-        multiAngles[0] = new MultiAngle(points[0], points[1], points[2], points[3]);
+        initPoints();
+        multiAngles[0] = (MultiAngle) figureFactory.createFigure("MultiAngle");
+        multiAngles[0].setPoint1(points[0]);
+        multiAngles[0].setPoint2(points[1]);
+        multiAngles[0].setPoint3(points[2]);
+        multiAngles[0].setPoint4(points[3]);
     }
 
     public Point[] getPoints() {
@@ -51,25 +73,21 @@ public class FigureService {
     }
 
     public Line[] getLines() {
-        initPoints();
         initLines();
         return lines;
     }
 
     public Triangle[] getTriangles() {
-        initPoints();
         initTriangles();
         return triangles;
     }
 
     public Square[] getSquares() {
-        initPoints();
         initSquare();
         return squares;
     }
 
     public MultiAngle[] getMultiAngles() {
-        initPoints();
         initMultiAngle();
         return multiAngles;
     }

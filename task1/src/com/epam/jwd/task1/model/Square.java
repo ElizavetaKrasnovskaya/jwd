@@ -21,16 +21,8 @@ public class Square extends Figure {
     private double thirdSide;
     private double fourthSide;
 
-    public Square() {
-    }
-
-    public Square(Point point1, Point point2, Point point3, Point point4) {
+    protected Square() {
         super(squareStrategy);
-        this.point1 = point1;
-        this.point2 = point2;
-        this.point3 = point3;
-        this.point4 = point4;
-        points = new Point[]{point1, point2, point3, point4};
     }
 
     public Point getPoint1() {
@@ -65,7 +57,12 @@ public class Square extends Figure {
         this.point4 = point4;
     }
 
+    public void setPoints() {
+        points = new Point[]{getPoint1(), getPoint2(), getPoint3()};
+    }
+
     public Point[] getPoints() {
+        setPoints();
         return points;
     }
 

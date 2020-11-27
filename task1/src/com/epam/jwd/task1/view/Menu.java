@@ -1,7 +1,6 @@
 package com.epam.jwd.task1.view;
 
 import com.epam.jwd.task1.controller.FigureService;
-import com.epam.jwd.task1.model.Line;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +15,7 @@ public class Menu {
     private Scanner scanner;
 
     public void printMenu() {
+        System.out.println(figureService.getTriangles()[0].getPoints());
         int choice = 0;
         while (choice != 12) {
             System.out.println("Enter: ");
