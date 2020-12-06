@@ -8,13 +8,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
-
     private static final Logger logger = LogManager.getLogger(Menu.class);
 
-    private FigureService figureService = new FigureService();
-    private Scanner scanner;
+    private static FigureService figureService = new FigureService();
+    private static Scanner scanner;
 
-    public void printMenu() {
+    public static void printMenu() {
         System.out.println(figureService.getTriangles()[0].getPoints());
         int choice = 0;
         while (choice != 12) {
@@ -41,7 +40,7 @@ public class Menu {
         }
     }
 
-    public void switchCase(int choice) {
+    public static void switchCase(int choice) {
         switch (choice) {
             case 1:
                 printPoints();
@@ -79,7 +78,7 @@ public class Menu {
         }
     }
 
-    public void printPoints() {
+    public static void printPoints() {
         int flag = 0;
         do {
             figureService.initPoints();
@@ -89,7 +88,7 @@ public class Menu {
         } while (flag < figureService.getPoints().length);
     }
 
-    public void printLines() {
+    public static void printLines() {
         for (int i = 0; i < figureService.getLines().length; i++) {
             if (figureService.getLines()[i].validateLine()) {
                 System.out.println(figureService.getLines()[i]);
@@ -101,7 +100,7 @@ public class Menu {
         }
     }
 
-    public void printTriangles() {
+    public static void printTriangles() {
         for (int i = 0; i < figureService.getTriangles().length; i++) {
             if (figureService.getTriangles()[i].validate()) {
                 System.out.println(figureService.getTriangles()[i]);
@@ -114,7 +113,7 @@ public class Menu {
         }
     }
 
-    public void printSquare() {
+    public static void printSquare() {
         for (int i = 0; i < figureService.getSquares().length; i++) {
             if (figureService.getSquares()[i].validate()) {
                 System.out.println(figureService.getSquares()[i]);
@@ -126,7 +125,7 @@ public class Menu {
         }
     }
 
-    public void printMultiAngle() {
+    public static void printMultiAngle() {
         for (int i = 0; i < figureService.getMultiAngles().length; i++) {
             if (figureService.getMultiAngles()[i].validate()) {
                 System.out.println(figureService.getMultiAngles()[i]);
@@ -138,7 +137,7 @@ public class Menu {
         }
     }
 
-    public void printPerimeterOfTriangle() {
+    public static void printPerimeterOfTriangle() {
         for (int i = 0; i < figureService.getTriangles().length; i++) {
             if (figureService.getTriangles()[i].validate()) {
                 System.out.println(figureService.getTriangles()[i].calculatePerimeter(figureService.getTriangles()[i].getPoints()));
@@ -150,7 +149,7 @@ public class Menu {
         }
     }
 
-    public void printAreaOfTriangle() {
+    public static void printAreaOfTriangle() {
         for (int i = 0; i < figureService.getTriangles().length; i++) {
             if (figureService.getTriangles()[i].validate()) {
                 System.out.println(figureService.getTriangles()[i].calculateArea(figureService.getTriangles()[i].getPoints()));
@@ -162,7 +161,7 @@ public class Menu {
         }
     }
 
-    public void printPerimeterOfSquare() {
+    public static void printPerimeterOfSquare() {
         for (int i = 0; i < figureService.getSquares().length; i++) {
             if (figureService.getSquares()[i].validate()) {
                 System.out.println(figureService.getSquares()[i].calculateArea(figureService.getSquares()[i].getPoints()));
@@ -174,7 +173,7 @@ public class Menu {
         }
     }
 
-    public void printAreaOfSquare() {
+    public static void printAreaOfSquare() {
         for (int i = 0; i < figureService.getSquares().length; i++) {
             if (figureService.getSquares()[i].validate()) {
                 System.out.println(figureService.getSquares()[i].calculateArea(figureService.getSquares()[i].getPoints()));
@@ -186,7 +185,7 @@ public class Menu {
         }
     }
 
-    public void printPerimeterOfMultiAngle() {
+    public static void printPerimeterOfMultiAngle() {
         for (int i = 0; i < figureService.getMultiAngles().length; i++) {
             if (figureService.getMultiAngles()[i].validate()) {
                 System.out.println(figureService.getMultiAngles()[i].calculatePerimeter(figureService.getMultiAngles()[i].getPoints()));
@@ -198,7 +197,7 @@ public class Menu {
         }
     }
 
-    public void printAreaOfMultiAngle() {
+    public static void printAreaOfMultiAngle() {
         for (int i = 0; i < figureService.getMultiAngles().length; i++) {
             if (figureService.getMultiAngles()[i].validate()) {
                 System.out.println(figureService.getMultiAngles()[i].calculateArea(figureService.getMultiAngles()[i].getPoints()));
