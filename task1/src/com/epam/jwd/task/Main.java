@@ -1,9 +1,10 @@
-package com.epam.jwd.task1;
+package com.epam.jwd.task;
 
-import com.epam.jwd.task1.view.Menu;
+import com.epam.jwd.task.view.Menu;
 
 public class Main {
     public static void main(String[] args) {
         Menu.printMenu();
     }
+
 }

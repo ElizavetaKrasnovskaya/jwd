@@ -2,10 +2,10 @@ package com.epam.jwd.task.service.impl;
 
 import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.exception.FigureNotExistException;
-import com.epam.jwd.task.model.Figure;
-import com.epam.jwd.task.model.MultiAngle;
-import com.epam.jwd.task.model.Square;
-import com.epam.jwd.task.model.Triangle;
+import com.epam.jwd.task.model.impl.Figure;
+import com.epam.jwd.task.model.impl.MultiAngle;
+import com.epam.jwd.task.model.impl.Square;
+import com.epam.jwd.task.model.impl.Triangle;
 import com.epam.jwd.task.service.FigurePostProcessor;
 
 public class FigureExistencePostProcessor implements FigurePostProcessor {

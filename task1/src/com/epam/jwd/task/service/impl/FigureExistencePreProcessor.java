@@ -2,7 +2,7 @@ package com.epam.jwd.task.service.impl;
 
 import com.epam.jwd.task.exception.FigureException;
 import com.epam.jwd.task.exception.FigureNotExistException;
-import com.epam.jwd.task.model.Point;
+import com.epam.jwd.task.model.impl.Point;
 import com.epam.jwd.task.service.FigurePreProcessor;
 
 public class FigureExistencePreProcessor implements FigurePreProcessor {
