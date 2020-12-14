@@ -8,16 +8,18 @@ import com.epam.jwd.task.model.impl.MultiAngle;
 import com.epam.jwd.task.model.impl.Point;
 import com.epam.jwd.task.model.impl.SimpleApplicationContext;
 
+import java.util.ArrayList;
+
 public class MultiAngleLogic {
-    public static MultiAngle[] initMultiAngels() {
-        Point[] points = PointLogic.initPoints();
-        MultiAngle[] multiAngles = new MultiAngle[1];
+    public static ArrayList<MultiAngle> initMultiAngels() {
+        ArrayList<Point> points = PointLogic.initPoints();
+        ArrayList<MultiAngle> multiAngles = new ArrayList<>(1);
 
         try {
             final ApplicationContext applicationContext = SimpleApplicationContext.getInstance();
             final FigureFactory figureFactory = applicationContext.createFigureFactory();
 
-            multiAngles[0] = (MultiAngle) figureFactory.createFigure(FigureType.MULTI_ANGLE, points);
+            multiAngles.set(0, (MultiAngle) figureFactory.createFigure(FigureType.MULTI_ANGLE, points));
         } catch (FigureException ex) {
             ex.printStackTrace();
         }

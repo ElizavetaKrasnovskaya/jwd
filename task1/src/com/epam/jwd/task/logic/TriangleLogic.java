@@ -8,18 +8,19 @@ import com.epam.jwd.task.model.impl.Point;
 import com.epam.jwd.task.model.impl.SimpleApplicationContext;
 import com.epam.jwd.task.model.impl.Triangle;
 
+import java.util.ArrayList;
+
 public class TriangleLogic {
 
-    public static Triangle[] initTriangles() {
-        Point[] points = PointLogic.initPoints();
-        Triangle[] triangles = new Triangle[2];
+    public static ArrayList<Triangle> initTriangles() {
+        ArrayList<Point> points = PointLogic.initPoints();
+        ArrayList<Triangle> triangles = new ArrayList<>();
 
-        for (int i = 0; i < triangles.length; i++) {
+        for (int i = 0; i < triangles.size(); i++) {
             try {
                 final ApplicationContext applicationContext = SimpleApplicationContext.getInstance();
                 final FigureFactory figureFactory = applicationContext.createFigureFactory();
-
-                triangles[i] = (Triangle) figureFactory.createFigure(FigureType.TRIANGLE, points);
+                triangles.set(i, (Triangle) figureFactory.createFigure(FigureType.TRIANGLE, points));
             } catch (FigureException ex) {
                 ex.printStackTrace();
             }

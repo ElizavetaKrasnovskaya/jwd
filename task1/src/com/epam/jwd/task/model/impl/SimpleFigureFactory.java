@@ -5,6 +5,8 @@ import com.epam.jwd.task.exception.FigureNotExistException;
 import com.epam.jwd.task.factory.FigureFactory;
 import com.epam.jwd.task.model.FigureType;
 
+import java.util.ArrayList;
+
 public class SimpleFigureFactory implements FigureFactory {
 
     public static SimpleFigureFactory instance;
@@ -21,15 +23,15 @@ public class SimpleFigureFactory implements FigureFactory {
     }
 
     @Override
-    public Figure createFigure(FigureType type, Point... figureConstituents) throws FigureException {
+    public Figure createFigure(FigureType type, ArrayList<Point> figureConstituents) throws FigureException {
         Figure figure;
 
         switch (type) {
             case TRIANGLE:
-                figure = new Triangle(figureConstituents[0], figureConstituents[1], figureConstituents[2]);
+                figure = new Triangle(figureConstituents.get(0), figureConstituents.get(1), figureConstituents.get(2));
                 break;
             case SQUARE:
-                figure = new Square(figureConstituents[0], figureConstituents[1], figureConstituents[2], figureConstituents[3]);
+                figure = new Square(figureConstituents.get(0), figureConstituents.get(1), figureConstituents.get(2), figureConstituents.get(3));
                 break;
             case MULTI_ANGLE:
                 figure = new MultiAngle(figureConstituents);

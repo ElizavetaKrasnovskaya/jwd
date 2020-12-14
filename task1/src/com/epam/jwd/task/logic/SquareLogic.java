@@ -8,14 +8,16 @@ import com.epam.jwd.task.model.impl.Point;
 import com.epam.jwd.task.model.impl.SimpleApplicationContext;
 import com.epam.jwd.task.model.impl.Square;
 
+import java.util.ArrayList;
+
 public class SquareLogic {
-    public static Square[] initSquare() {
-        Point[] points = PointLogic.initPoints();
-        Square[] squares = new Square[1];
+    public static ArrayList<Square> initSquare() {
+        ArrayList<Point> points = PointLogic.initPoints();
+        ArrayList<Square> squares = new ArrayList<>(1);
         try {
             final ApplicationContext applicationContext = SimpleApplicationContext.getInstance();
             final FigureFactory figureFactory = applicationContext.createFigureFactory();
-            squares[0] = (Square) figureFactory.createFigure(FigureType.SQUARE, points);
+            squares.add((Square) figureFactory.createFigure(FigureType.SQUARE, points));
         } catch (FigureException ex) {
             ex.printStackTrace();
         }

@@ -1,39 +1,40 @@
 package com.epam.jwd.task.model.impl;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class MultiAngle extends Figure {
 
-    private final Point[] points;
+    private final ArrayList<Point> points;
 
-    public MultiAngle(Point[] points) {
+    public MultiAngle(ArrayList<Point> points) {
         this.points = points;
     }
 
-    public Point[] getPoints() {
+    public ArrayList<Point> getPoints() {
         return points;
     }
 
     public boolean validate() {
 
-        double firstSide = Math.sqrt(Math.pow(Math.abs(getPoints()[0].getX() - getPoints()[1].getX()), 2) +
-                Math.pow(Math.abs(getPoints()[0].getY() - getPoints()[1].getY()), 2));
+        double firstSide = Math.sqrt(Math.pow(Math.abs(getPoints().get(0).getX() - getPoints().get(1).getX()), 2) +
+                Math.pow(Math.abs(getPoints().get(0).getY() - getPoints().get(1).getY()), 2));
 
-        double secondSide = Math.sqrt(Math.pow(Math.abs(getPoints()[1].getX() - getPoints()[2].getX()), 2) +
-                Math.pow(Math.abs(getPoints()[1].getY() - getPoints()[2].getY()), 2));
+        double secondSide = Math.sqrt(Math.pow(Math.abs(getPoints().get(1).getX() - getPoints().get(2).getX()), 2) +
+                Math.pow(Math.abs(getPoints().get(1).getY() - getPoints().get(2).getY()), 2));
 
-        double thirdSide = Math.sqrt(Math.pow(Math.abs(getPoints()[2].getX() - getPoints()[3].getX()), 2) +
-                Math.pow(Math.abs(getPoints()[2].getY() - getPoints()[3].getY()), 2));
+        double thirdSide = Math.sqrt(Math.pow(Math.abs(getPoints().get(2).getX() - getPoints().get(3).getX()), 2) +
+                Math.pow(Math.abs(getPoints().get(2).getY() - getPoints().get(3).getY()), 2));
 
-        double fourthSide = Math.sqrt(Math.pow(Math.abs(getPoints()[3].getX() - getPoints()[0].getX()), 2) +
-                Math.pow(Math.abs(getPoints()[3].getY() - getPoints()[0].getY()), 2));
+        double fourthSide = Math.sqrt(Math.pow(Math.abs(getPoints().get(3).getX() - getPoints().get(0).getX()), 2) +
+                Math.pow(Math.abs(getPoints().get(3).getY() - getPoints().get(0).getY()), 2));
 
-        if (getPoints()[0].equals(getPoints()[1]) ||
-                getPoints()[0].equals(getPoints()[2]) ||
-                getPoints()[0].equals(getPoints()[3]) ||
-                getPoints()[1].equals(getPoints()[2]) ||
-                getPoints()[1].equals(getPoints()[3]) ||
-                getPoints()[2].equals(getPoints()[3])) {
+        if (getPoints().get(0).equals(getPoints().get(1)) ||
+                getPoints().get(0).equals(getPoints().get(2)) ||
+                getPoints().get(0).equals(getPoints().get(3)) ||
+                getPoints().get(1).equals(getPoints().get(2)) ||
+                getPoints().get(1).equals(getPoints().get(3)) ||
+                getPoints().get(2).equals(getPoints().get(3))) {
 
             return false;
 
@@ -50,17 +51,17 @@ public class MultiAngle extends Figure {
         if (this == o) return true;
         if (!(o instanceof MultiAngle)) return false;
         MultiAngle that = (MultiAngle) o;
-        return Arrays.equals(getPoints(), that.getPoints());
+        return getPoints().equals(that.getPoints());
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(getPoints());
+        return Objects.hash(getPoints());
     }
 
     @Override
     public String toString() {
-        return "MultiAngle " +
-                "points = " + Arrays.toString(points);
+        return "MultiAngle" +
+                "points=" + points;
     }
 }

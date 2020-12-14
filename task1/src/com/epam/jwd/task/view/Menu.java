@@ -14,6 +14,7 @@ import com.epam.jwd.task.model.impl.Triangle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -66,35 +67,35 @@ public class Menu {
     }
 
     public static void printPoints() {
-        Point[] points = PointLogic.initPoints();
+        ArrayList<Point> points = PointLogic.initPoints();
         for (Point point : points) {
             System.out.println(point);
         }
     }
 
     public static void printLines() {
-        Line[] lines = LineLogic.initLines();
+        ArrayList<Line> lines = LineLogic.initLines();
         for (Line line : lines) {
             System.out.println(line);
         }
     }
 
     public static void printTriangles() {
-        Figure[] triangles = TriangleLogic.initTriangles();
+        ArrayList<Triangle> triangles = TriangleLogic.initTriangles();
         for (Figure triangle : triangles) {
             System.out.println(triangle);
         }
     }
 
     public static void printSquare() {
-        Square[] squares = SquareLogic.initSquare();
+        ArrayList<Square> squares = SquareLogic.initSquare();
         for (Square square : squares) {
             System.out.println(square);
         }
     }
 
     public static void printMultiAngle() {
-        MultiAngle[] multiAngles = MultiAngleLogic.initMultiAngels();
+        ArrayList<MultiAngle> multiAngles = MultiAngleLogic.initMultiAngels();
         for (MultiAngle multiAngle : multiAngles) {
             System.out.println(multiAngle);
         }

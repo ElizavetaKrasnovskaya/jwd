@@ -7,12 +7,19 @@ public abstract class Figure {
 
     private FigureStrategy figureStrategy;
     private FigureType FIGURE_TYPE;
+    private long ID = 0;
+    private static long nextID = 1;
 
     public Figure(){}
 
     public Figure(FigureStrategy figureStrategy, FigureType FIGURE_TYPE) {
         this.figureStrategy = figureStrategy;
         this.FIGURE_TYPE = FIGURE_TYPE;
+        ID = nextID++;
+    }
+
+    public long getID() {
+        return ID;
     }
 
     public FigureType getFIGURE_TYPE() {

@@ -3,13 +3,15 @@ package com.epam.jwd.task.logic;
 import com.epam.jwd.task.model.impl.Line;
 import com.epam.jwd.task.model.impl.Point;
 
+import java.util.ArrayList;
+
 public class LineLogic {
 
-    public static Line[] initLines() {
-        Point[] points = PointLogic.initPoints();
-        Line[] lines = new Line[2];
-        lines[0] = new Line(points[1], points[2]);
-        lines[1] = new Line(points[3], points[3]);
+    public static ArrayList<Line> initLines() {
+        ArrayList<Point> points = PointLogic.initPoints();
+        ArrayList<Line> lines = new ArrayList<>(2);
+        lines.add(new Line(points.get(1), points.get(1)));
+        lines.add(new Line(points.get(3), points.get(3)));
         return lines;
     }
 
