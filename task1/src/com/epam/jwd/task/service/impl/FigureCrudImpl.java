@@ -1,82 +1,34 @@
 package com.epam.jwd.task.service.impl;
 
-import com.epam.jwd.task.builder.FigureCriteria;
 import com.epam.jwd.task.exception.FigureException;
-import com.epam.jwd.task.factory.FigureFactory;
-import com.epam.jwd.task.model.ApplicationContext;
-import com.epam.jwd.task.model.FigureType;
-import com.epam.jwd.task.model.impl.Figure;
-import com.epam.jwd.task.model.impl.Point;
-import com.epam.jwd.task.model.impl.SimpleApplicationContext;
+import com.epam.jwd.task.exception.IllegalFigureTypeException;
+import com.epam.jwd.task.factory.FigureType;
+import com.epam.jwd.task.factory.impl.ApplicationContext;
+import com.epam.jwd.task.model.Figure;
+import com.epam.jwd.task.model.Point;
 import com.epam.jwd.task.service.FigureCrud;
-import com.epam.jwd.task.service.FigureStorageService;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
 public class FigureCrudImpl implements FigureCrud {
-
-    private static final ApplicationContext APPLICATION_CONTEXT = SimpleApplicationContext.getInstance();
-    private static final FigureFactory FIGURE_FACTORY = APPLICATION_CONTEXT.createFigureFactory();
-    private static final FigureStorageService FIGURE_STORAGE_SERVICE = FigureCacheStorageService.getInstance();
-
-
     @Override
-    public Figure createFigure(FigureType type, ArrayList<Point> points) throws FigureException {
-        return FIGURE_FACTORY.createFigure(type, points);
+    public Figure create(FigureType type, ArrayList<Point> figureConstituents) throws FigureException {
+        return ApplicationContext.getFigureFactory().createFigure(type, figureConstituents);
     }
 
     @Override
-    public List<Figure> multiCreateFigure(Map<FigureType, List<ArrayList<Point>>> figureCreateInfo) throws FigureException {
-        List<Figure> figures = new ArrayList<>();
-
-        for (FigureType figureType : figureCreateInfo.keySet()) {
-            for (ArrayList<Point> points : figureCreateInfo.get(figureType)) {
-                figures.add(FIGURE_FACTORY.createFigure(figureType, points));
-            }
-        }
-
-        return figures;
+    public boolean delete(Figure figure) throws FigureException {
+        return false;
     }
 
     @Override
-    public void deleteFigure(Figure figure) throws FigureException {
-        FigureCacheStorageService figureCacheStorageService = FigureCacheStorageService.getInstance();
-        figureCacheStorageService.removeFigureFromStorage(figure);
+    public boolean update(Figure figure) throws IllegalFigureTypeException {
+        return false;
     }
 
     @Override
-    public Figure findFigure(Figure figure) throws FigureException {
-        return FIGURE_STORAGE_SERVICE.fetchFigureFromStorage(figure);
+    public Optional<Figure> findByIndex(FigureType figureType, int index) throws IllegalFigureTypeException {
+        return Optional.empty();
     }
-
-    @Override
-    public void updateFigure(Figure oldFigure, Figure newFigure) throws FigureException {
-        FIGURE_STORAGE_SERVICE.removeFigureFromStorage(oldFigure);
-        FIGURE_STORAGE_SERVICE.addFigureToStorage(newFigure);
-    }
-
-    @Override
-    public Figure findFigureByID(long id) throws FigureException {
-        Figure figure = null;
-        Set<FigureType> figureTypes = EnumSet.allOf(FigureType.class);
-        Iterator<FigureType> iterator = figureTypes.iterator();
-
-        while (iterator.hasNext() && figure == null) {
-            figure = FIGURE_STORAGE_SERVICE.fetchFigureByIDFromStorage(iterator.next(), id);
-        }
-
-        return figure;
-    }
-
-    @Override
-    public List<Figure> findFiguresByCriteria(FigureCriteria figureCriteria) {
-        //TODO search figure by criteria
-        return null;
-    }
-
 }
